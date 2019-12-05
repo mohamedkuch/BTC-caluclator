@@ -34,12 +34,10 @@ body {
     position: absolute;
     top: 5px;
     width: 100%;
-    max-height: 50vh;
+    height: 50vh;
 }
 .devider {
-    border: 1px solid #ffffff36;
-    width: 80%;
-    margin-left: 10%;
+    border-top: 1px solid #ffffff36;
 }
 .logo{
     margin: 0 auto;
@@ -47,7 +45,6 @@ body {
     height: auto;
     max-width: 100px;
     margin-top: 2vh;
-
 }
 .logoImg{
     margin: 0 auto;
@@ -55,7 +52,7 @@ body {
     max-width: 100px;
 
 }
-.mainTable{
+.mainTable , .topTable{
     width: 80%;
     max-width: 800px;
     margin: 0 auto;
@@ -70,13 +67,15 @@ body {
     font-size: 2em;
     background:  #0000002f;
     border-radius: 20%;
-
 }
 .mainTableRow{
    height: 12vh;
 }
 
-
+.topTableColumn {
+    line-height: 12vh;
+    font-size: 1.5em;
+}
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
 
