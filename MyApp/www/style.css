@@ -1,13 +1,10 @@
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
     font-family: 'Montserrat';
-
 }
 @font-face {
-
   font-family: 'Montserrat';
   src: url('fonts/Montserrat/Montserrat-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
-
 }
 
 body {
@@ -15,7 +12,6 @@ body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     font-family: system-ui, -apple-system, -apple-system-font, 'Montserrat';
-
     font-size:12px;
     height:100vh;
     margin:0px;
@@ -67,34 +63,32 @@ body {
     font-size: 2em;
     background:  #0000002f;
     border-radius: 20%;
+    transition: 0.3s all;
 }
 .mainTableRow{
    height: 12vh;
 }
-
 .topTableColumn {
     line-height: 12vh;
     font-size: 1.5em;
 }
-/* Landscape layout (with min-width) */
+/* 
+// Landscape layout (with min-width) 
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
 
 }
-
-
 @keyframes fade {
     from { opacity: 1.0; }
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
- 
 @-webkit-keyframes fade {
     from { opacity: 1.0; }
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
- 
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
-}
+} */
+

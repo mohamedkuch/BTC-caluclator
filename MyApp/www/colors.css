@@ -17,3 +17,9 @@
 .lightColorBG {
     background: #fafafa;
 }
+
+
+.blueColorClick:active {
+    background:  #ffffffd2;
+    color: #000000dc;
+}
