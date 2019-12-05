@@ -60,17 +60,52 @@ body {
     height: 10vh;
     margin: 0 auto;
     line-height: 10vh; 
-    font-size: 1.2em;
     background:  #0000002f;
     border-radius: 20%;
-    transition: 0.3s all;
+    font-size: 2em;
+    transition: 1s all;
 }
 .mainTableRow{
    height: 12vh;
 }
 .topTableColumn {
-    line-height: 12vh;
-    font-size: 0.8em;
+    line-height: 8vh;
+    font-size: 1.5em;
+}
+.topTableColumnSpacer{
+    height: 10vh;
+
+
+}
+/* Mobile Small */
+@media screen and (max-width:325px) {
+    .topTableColumn {
+        font-size: 0.9em;
+
+    }
+    .mainTableElement{
+        font-size: 1.3em;
+
+    }
+}
+/* Mobile Meduim */
+@media screen and (max-width:380px) and (min-width:325px)  {
+    .topTableColumn {
+        font-size: 1.2em;
+    }
+    .mainTableElement{
+        font-size: 1.6em;
+    }
+}
+.currWrapper{
+    width: 20%;
+}
+.currValueWrapper{
+    text-align: center;
+}
+.currValueWrapperActive {
+    background: rgba(18, 27, 32, 0.411);
+
 }
 /* 
 // Landscape layout (with min-width) 
