@@ -60,7 +60,7 @@ body {
     height: 10vh;
     margin: 0 auto;
     line-height: 10vh; 
-    font-size: 2em;
+    font-size: 1.2em;
     background:  #0000002f;
     border-radius: 20%;
     transition: 0.3s all;
@@ -70,7 +70,7 @@ body {
 }
 .topTableColumn {
     line-height: 12vh;
-    font-size: 1.5em;
+    font-size: 0.8em;
 }
 /* 
 // Landscape layout (with min-width) 

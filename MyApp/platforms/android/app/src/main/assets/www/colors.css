@@ -15,5 +15,11 @@
     
 }
 .lightColorBG {
-    background: #e2e1e1;
+    background: #fafafa;
+}
+
+
+.blueColorClick:active {
+    background:  #ffffffd2;
+    color: #000000dc;
 }
