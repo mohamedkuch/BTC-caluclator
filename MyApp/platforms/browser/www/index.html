@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, viewport-fit=cover" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="format-detection" content="telephone=no" />
+
+<!-- to avoid the warning of content security policy -->
+<meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src * 'unsafe-inline' 'unsafe-eval'">
+
+<title>sudoku</title>
+<script>
+  // fix wp8 view port issue, see:
+  // https://github.com/floatinghotpot/cordova-admob-pro/issues/109
+  // https://coderwall.com/p/zk_2la/responsive-design-in-ie-10-on-windows-phone-8
+  // http://stackoverflow.com/questions/24007577/windows-phone-8-viewport-issue
+(function() {
+  if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    var msViewportStyle = document.createElement("style");
+    msViewportStyle.appendChild(
+      document.createTextNode("@-ms-viewport{width:auto!important}")
+    );
+    document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+  }
+})();
+</script>
+
+<!-- optional -->
+<script type="text/javascript" src="jquery-1.9.js"></script>
+
+<!-- must-have, which will be created by cordova prepare/build -->
+<script type="text/javascript" src="cordova.js"></script>
+
+<!-- admob config -->
+<script type="text/javascript" src="admobConfiguration.js"></script>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<div class="containerMain">
+
+</div>
+  <!-- <div id="fullpage">
+    <p>Demo for AdMob Plugin</p>
+    <h3 id='h3_banner'>Banner</h3>
+    <input type='checkbox' id='overlap' />overlap
+    <input type='checkbox' id='offsetTopBar' />offsetTopBar
+    <br/>
+    <select id="adSize">
+      <option value='SMART_BANNER'>SMART_BANNER</option>
+      <option value='BANNER'>BANNER</option>
+      <option value='MEDIUM_RECTANGLE'>MEDIUM_RECTANGLE</option>
+      <option value='FULL_BANNER'>FULL_BANNER</option>
+      <option value='LEADERBOARD'>LEADERBOARD</option>
+      <option value='SKYSCRAPER'>SKYSCRAPER</option>
+    </select><br/>
+    <select id="adPosition">
+      <option value='1'>Top Left</option>
+      <option value='2'>Top Center</option>
+      <option value='3'>Top Right</option>
+      <option value='4'>Left</option>
+      <option value='5'>Center</option>
+      <option value='6'>Right</option>
+      <option value='7'>Bottom Left</option>
+      <option value='8' selected>Bottom Center</option>
+      <option value='9'>Bottom Right</option>
+    </select><br/>
+    <button id='btn_create'>createBanner</button>
+    <button id='btn_remove'>removeBanner</button>
+    <button id='btn_show'>showBanner</button>
+    <button id='btn_hide'>hideBanner</button>
+    <hr />
+
+    <h3 id='h3_full'>Interstitial</h3>
+    <input type='checkbox' id='autoshow' checked />auto show when ready<br />
+    <button id='btn_prepare'>prepareInterstitial</button>
+    <button id='btn_showfull'>showInterstitial</button>
+
+    <h3 id='h3_video'>Rewarded Video</h3>
+    <input type='checkbox' id='autoshowvideo' checked />auto show when ready<br />
+    <button id='btn_preparevideo'>prepareRewardVideoAd</button>
+    <button id='btn_showvideo'>showRewardVideoAd</button>
+
+    <p><textarea rows=4 cols=30 id='textinfo'></textarea></p>
+
+  </div> -->
+</body>
+</html>

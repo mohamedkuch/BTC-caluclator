@@ -1,0 +1,24 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-admobpro": {
+      "ADMOB_APP_ID": "ca-app-pub-6226969996138427/3345847280",
+      "PLAY_SERVICES_VERSION": "16.0.0",
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-extension": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    }
+  }
+}
