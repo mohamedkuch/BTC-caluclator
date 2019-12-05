@@ -1,17 +1,21 @@
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-    font-family:'Montserrat', sans-serif !important;
+    font-family: 'Montserrat';
 
 }
 @font-face {
-    font-family: 'Montserrat', sans-serif;
-    src: url('Montserrat-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+
+  font-family: 'Montserrat';
+  src: url('fonts/Montserrat/Montserrat-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+
 }
+
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    font-family: system-ui, -apple-system, -apple-system-font, 'Montserrat', sans-serif;
+    font-family: system-ui, -apple-system, -apple-system-font, 'Montserrat';
+
     font-size:12px;
     height:100vh;
     margin:0px;
@@ -30,9 +34,10 @@ body {
     position: absolute;
     top: 5px;
     width: 100%;
+    max-height: 50vh;
 }
 .devider {
-    border: 1px solid #797979;
+    border: 1px solid #ffffff36;
     width: 80%;
     margin-left: 10%;
 }
@@ -63,9 +68,12 @@ body {
     margin: 0 auto;
     line-height: 10vh; 
     font-size: 2em;
+    background:  #0000002f;
+    border-radius: 20%;
+
 }
 .mainTableRow{
-   height: 15vh;
+   height: 12vh;
 }
 
 
