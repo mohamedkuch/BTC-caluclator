@@ -12,7 +12,7 @@ body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     font-family: system-ui, -apple-system, -apple-system-font, 'Montserrat';
-    font-size:12px;
+    font-size:14px;
     height:100vh;
     margin:0px;
     padding:0px;
@@ -68,12 +68,10 @@ body {
     line-height: 10vh;
     background: #0000002f;
     border-radius: 3%;
-    font-size: 2em;
     transition: 1s all;
 }
 .topTableColumn {
     line-height: 5vh;
-    font-size: 1.5em;
 }
 .topTableColumnSpacer{
     height: 15%;
@@ -82,33 +80,44 @@ body {
 }
 /* Mobile Small */
 @media screen and (max-width:325px) {
-    .topTableColumn {
-        font-size: 1em;
-
+    .currWrapper{
+        font-size: 10px;
+    }
+    .currValueWrapper{
+        font-size: 16px;
     }
     .mainTableElement{
-        font-size: 1.3em;
-    }
-    .currWrapper{
-        font-size: 0.8em;
+        font-size: 20px;
+
     }
 }
 /* Mobile Meduim */
 @media screen and (max-width:380px) and (min-width:325px)  {
-    .topTableColumn {
-        font-size: 1.2em;
+    .currWrapper{
+        font-size: 12px;
     }
     .mainTableElement{
-        font-size: 1.6em;
+        font-size: 22px;
     }
+    .currValueWrapper{
+        font-size: 18px;
+    }
+}
+/* Mobile Meduim */
+@media screen and (min-width:380px)  {
     .currWrapper{
-        font-size: 1em;
+        font-size: 16px;
+    }
+    .currValueWrapper{
+        font-size: 20px;
+    }
+    .mainTableElement{
+        font-size: 24px;
     }
 }
 .currWrapper{
     width: 20%;
     text-align: center;
-    font-size: 1.3em;
 }
 .currWrapperActive {
     background:#00000096;
@@ -116,6 +125,7 @@ body {
 }
 .currValueWrapper{
     text-align: center;
+
 }
 .currValueWrapperActive {
     background: rgba(18, 27, 32, 0.411);
