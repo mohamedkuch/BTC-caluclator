@@ -50,6 +50,7 @@ body {
 }
 .mainTable , .topTable{
     width: 80%;
+    height: 50vh;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -65,22 +66,19 @@ body {
     font-size: 2em;
     transition: 1s all;
 }
-.mainTableRow{
-   height: 12vh;
-}
 .topTableColumn {
-    line-height: 8vh;
+    line-height: 5vh;
     font-size: 1.5em;
 }
 .topTableColumnSpacer{
-    height: 10vh;
+    height: 15%;
 
 
 }
 /* Mobile Small */
 @media screen and (max-width:325px) {
     .topTableColumn {
-        font-size: 0.9em;
+        font-size: 1em;
 
     }
     .mainTableElement{
@@ -99,6 +97,13 @@ body {
 }
 .currWrapper{
     width: 20%;
+    text-align: center;
+    font-size: 1em;
+
+}
+.currWrapperActive {
+    background:#00000096;
+
 }
 .currValueWrapper{
     text-align: center;
