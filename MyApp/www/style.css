@@ -103,7 +103,7 @@ body {
         font-size: 18px;
     }
 }
-/* Mobile Meduim */
+/* large Meduim */
 @media screen and (min-width:380px)  {
     .currWrapper{
         font-size: 16px;
