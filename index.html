@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, viewport-fit=cover" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="format-detection" content="telephone=no" />
+
+<!-- to avoid the warning of content security policy -->
+<meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src * 'unsafe-inline' 'unsafe-eval'">
+
+<title>sudoku</title>
+<script>
+  // fix wp8 view port issue, see:
+  // https://github.com/floatinghotpot/cordova-admob-pro/issues/109
+  // https://coderwall.com/p/zk_2la/responsive-design-in-ie-10-on-windows-phone-8
+  // http://stackoverflow.com/questions/24007577/windows-phone-8-viewport-issue
+(function() {
+  if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    var msViewportStyle = document.createElement("style");
+    msViewportStyle.appendChild(
+      document.createTextNode("@-ms-viewport{width:auto!important}")
+    );
+    document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+  }
+})();
+</script>
+
+<!-- optional -->
+<script type="text/javascript" src="jquery-1.9.js"></script>
+
+<!-- must-have, which will be created by cordova prepare/build -->
+<script type="text/javascript" src="cordova.js"></script>
+
+<!-- admob config -->
+<script type="text/javascript" src="admobConfiguration.js"></script>
+
+<!-- Font Awesome-->
+<link rel="stylesheet" type="text/css" href="fonts/font-awsome/all.min.css">
+<script type="text/javascript" src="fonts/font-awsome/all.min.js"></script>
+
+
+
+<!-- custom style -->
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="colors.css">
+
+</head>
+
+<body class="blueColorGradiant">
+    <table class="topTable lightColorText">
+       
+        <tr class="topTableRow">
+          <td colspan="3" class="topTableColumn">
+              <div class="logo">
+                  <svg class="logoImg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                  viewBox="0 0 172 172"
+                  style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172span72v172z" fill="none"></path><g fill="#ffffff"><path d="M83.3125,5.375c-42.96851,0 -77.9375,34.96899 -77.9375,77.9375c0,42.96851 34.96899,77.9375 77.9375,77.9375c42.96851,0 77.9375,-34.96899 77.9375,-77.9375c0,-42.96851 -34.96899,-77.9375 -77.9375,-77.9375zM83.3125,10.75c40.00806,0 72.5625,32.55444 72.5625,72.5625c0,40.00806 -32.55444,72.5625 -72.5625,72.5625c-40.00806,0 -72.5625,-32.55444 -72.5625,-72.5625c0,-40.00806 32.55444,-72.5625 72.5625,-72.5625zM82.13672,21.521c-15.83105,0.31494 -31.1792,6.71875 -42.53809,18.07764c-24.09302,24.10352 -24.09302,63.31372 0,87.41724c0.5249,0.5249 1.21777,0.78735 1.90015,0.78735c0.69287,0 1.38574,-0.26245 1.91065,-0.78735c1.0498,-1.0498 1.0498,-2.75049 0,-3.80029c-22.0144,-22.00391 -22.00391,-57.80224 0,-79.80615c12.75513,-12.76562 31.03223,-18.68652 48.87891,-15.82056c1.45923,0.24146 2.83447,-0.76636 3.07593,-2.22559c0.24146,-1.46973 -0.76636,-2.85547 -2.22559,-3.08642c-3.67432,-0.58789 -7.34863,-0.83984 -11.00195,-0.75586zM103.88867,25.21631c-1.03931,0.05249 -2.00513,0.71387 -2.39355,1.75317c-0.5249,1.39624 0.17847,2.93945 1.57471,3.46436c1.91064,0.71387 3.80029,1.53271 5.64795,2.45654c0.38843,0.19946 0.79785,0.29395 1.20728,0.29395c0.97632,0 1.92114,-0.5354 2.40405,-1.48022c0.66138,-1.31226 0.12598,-2.93945 -1.19678,-3.61133c-2.00513,-1.00781 -4.09424,-1.92114 -6.18335,-2.70849c-0.34643,-0.12598 -0.70337,-0.17847 -1.0603,-0.16797zM119.41528,34.06616c-0.68237,0.08398 -1.33325,0.43042 -1.79517,1.00781c-0.91333,1.17578 -0.71387,2.85547 0.46191,3.7688c1.79517,1.40674 3.52734,2.94995 5.13354,4.56665c22.01441,22.00391 22.01441,57.80224 0,79.80615c-1.0498,1.0603 -1.0498,2.75049 0,3.81079c0.5249,0.5144 1.21777,0.78735 1.91065,0.78735c0.68237,0 1.37524,-0.27295 1.90015,-0.78735c24.09302,-24.10352 24.09302,-63.32422 0,-87.42773c-1.77417,-1.76367 -3.66382,-3.44336 -5.62695,-4.98657c-0.58789,-0.45141 -1.30176,-0.62988 -1.98413,-0.5459zM77.9375,40.3125c-1.49072,0 -2.6875,1.19678 -2.6875,2.6875v5.375h-8.0625c-1.49072,0 -2.6875,1.19678 -2.6875,2.6875v59.125c0,1.49072 1.19678,2.6875 2.6875,2.6875h8.0625v5.375c0,1.49072 1.19678,2.6875 2.6875,2.6875c1.49072,0 2.6875,-1.19678 2.6875,-2.6875v-5.375h5.375v5.375c0,1.49072 1.19678,2.6875 2.6875,2.6875c1.49072,0 2.6875,-1.19678 2.6875,-2.6875v-5.375c8.89185,0 16.125,-7.23315 16.125,-16.125v-5.375c0,-6.48779 -3.85278,-12.07275 -9.38525,-14.62378c2.47754,-2.44604 4.01025,-5.82642 4.01025,-9.56372v-5.375c0,-6.50879 -4.65064,-11.94678 -10.80249,-13.17505c0.0105,-0.08398 0.05249,-0.16797 0.05249,-0.26245v-5.375c0,-1.49072 -1.19678,-2.6875 -2.6875,-2.6875c-1.49072,0 -2.6875,1.19678 -2.6875,2.6875v5.375h-5.375v-5.375c0,-1.49072 -1.19678,-2.6875 -2.6875,-2.6875zM69.875,53.75span8.8125c4.44067,0 8.0625,3.62183 8.0625,8.0625v5.375c0,4.44067 -3.62183,8.0625 -8.0625,8.0625h-18.8125zM69.875,80.625h21.5c5.9314,0 10.75,4.8186 10.75,10.75v5.375c0,5.9314 -4.8186,10.75 -10.75,10.75h-21.5zM57.44531,124.6853c-1.0498,-0.12598 -2.11011,0.35693 -2.65601,1.32276l-2.6875,4.65064c-0.74536,1.29126 -0.30444,2.92895 0.97632,3.67432c0.41992,0.24146 0.88184,0.35693 1.34375,0.35693c0.92383,0 1.82666,-0.48291 2.32007,-1.34375l2.6875,-4.65064c0.74536,-1.28076 0.31494,-2.92896 -0.97632,-3.67432c-0.32544,-0.17847 -0.66138,-0.29395 -1.00781,-0.33594zM109.17969,124.6853c-0.34643,0.04199 -0.69287,0.15747 -1.00781,0.33594c-1.29126,0.74536 -1.72168,2.39355 -0.97632,3.68482l2.6875,4.65064c0.49341,0.86084 1.39624,1.34375 2.32007,1.34375c0.46191,0 0.92383,-0.12598 1.34375,-0.36743c1.29126,-0.74536 1.72168,-2.38306 0.97632,-3.66382l-2.6875,-4.65064c-0.5564,-0.96582 -1.6167,-1.45923 -2.65601,-1.33325zM69.38159,129.92383c-1.0393,0.14697 -1.94214,0.89233 -2.23608,1.97363l-1.38574,5.19653c-0.38843,1.42773 0.47241,2.89746 1.90015,3.28589c0.23096,0.06299 0.46191,0.08398 0.70337,0.08398c1.17578,0 2.26758,-0.78735 2.59302,-1.98413l1.39624,-5.19653c0.37793,-1.42773 -0.47241,-2.90796 -1.90015,-3.28589c-0.36743,-0.10498 -0.72436,-0.12598 -1.0708,-0.07349zM97.25391,129.92383c-0.34643,-0.05249 -0.71387,-0.03149 -1.0813,0.07349c-1.42773,0.37793 -2.27808,1.85815 -1.90015,3.28589l1.39624,5.19653c0.32544,1.19678 1.40674,1.98413 2.59302,1.98413c0.24146,0 0.47241,-0.02099 0.70337,-0.08398c1.42773,-0.38843 2.28857,-1.85815 1.90015,-3.28589l-1.38574,-5.19653c-0.29395,-1.0813 -1.19678,-1.82666 -2.22559,-1.97363zM83.3125,131.6875c-1.49072,0 -2.6875,1.19678 -2.6875,2.6875v5.375c0,1.49072 1.19678,2.6875 2.6875,2.6875c1.49072,0 2.6875,-1.19678 2.6875,-2.6875v-5.375c0,-1.49072 -1.19678,-2.6875 -2.6875,-2.6875z"></path></g></g></svg>
+              </div>
+          </td>
+        </tr>
+  
+        <tr class="topTableRow">
+            <td colspan="3" class="topTableColumnSpacer">
+            </td>
+          </tr>
+          
+        <tr class="topTableRow" >
+          <td colspan="1" class="topTableColumn currWrapper currWrapperActive">
+              <i style="position: relative; bottom: 3px;" class="fas fa-sort-down"></i> BTC
+          </td>
+          <td colspan="2" class="topTableColumn currValueWrapper currValueWrapperActive">
+             123123
+          </td>
+        </tr>
+  
+        <tr class="topTableRow">
+          <td colspan="1" class="topTableColumn devider currWrapper">
+              <i style="position: relative; bottom: 3px;" class="fas fa-sort-down"></i> USD
+          </td>
+          <td colspan="2" class="topTableColumn devider currValueWrapper">
+            123123
+         </td>
+        </tr>
+  
+        <tr class="topTableRow">
+            <td colspan="3" class="topTableColumnSpacer">
+            </td>
+          </tr>
+          
+      </table>
+      <table class="mainTable lightColorText">
+          <tr class="mainTableRow">
+            <td class="mainTableColumn">
+              <div class="mainTableElement blueColorClick  lightColorText">
+                  1
+              </div>
+            </td>
+            <td class="mainTableColumn">
+                <div class="mainTableElement blueColorClick  lightColorText">
+                    2
+                </div>
+            </td>
+            <td class="mainTableColumn">
+                <div class="mainTableElement blueColorClick  lightColorText">
+                    3
+                </div>
+            </td>
+
+            
+          </tr>
+          <tr class="mainTableRow">
+              <td class="mainTableColumn">
+                <div class="mainTableElement blueColorClick  lightColorText">
+                    4
+                </div>
+              </td>
+              <td class="mainTableColumn">
+                  <div class="mainTableElement blueColorClick  lightColorText">
+                      5
+                  </div>
+              </td>
+              <td class="mainTableColumn">
+                  <div class="mainTableElement blueColorClick  lightColorText">
+                      6
+                  </div>
+              </td>
+
+              
+          </tr>
+          <tr class="mainTableRow">
+            <td class="mainTableColumn">
+              <div class="mainTableElement blueColorClick  lightColorText">
+                  7
+              </div>
+            </td>
+            <td class="mainTableColumn">
+                <div class="mainTableElement blueColorClick  lightColorText">
+                    8
+                </div>
+            </td>
+            <td class="mainTableColumn">
+                <div class="mainTableElement blueColorClick  lightColorText">
+                    9
+                </div>
+            </td>
+
+              
+          </tr>
+
+          <tr class="mainTableRow">
+            <td class="mainTableColumn">
+              <div class="mainTableElement blueColorClick  lightColorText">
+                <i class="fas fa-undo-alt"></i>
+              </div>
+            </td>
+            <td class="mainTableColumn">
+                <div class="mainTableElement blueColorClick  lightColorText">
+                    0
+                </div>
+            </td>
+            <td class="mainTableColumn">
+                <div class="mainTableElement blueColorClick  lightColorText">
+                  <i class="fas fa-backspace"></i>
+
+                </div>
+            </td>
+
+              
+          </tr>
+
+      </table>
+
+
+    
+
+
+
+
+
+  <!-- <div id="fullpage">
+    <p>Demo for AdMob Plugin</p>
+    <h3 id='h3_banner'>Banner</h3>
+    <input type='checkbox' id='overlap' />overlap
+    <input type='checkbox' id='offsetTopBar' />offsetTopBar
+    <br/>
+    <select id="adSize">
+      <option value='SMART_BANNER'>SMART_BANNER</option>
+      <option value='BANNER'>BANNER</option>
+      <option value='MEDIUM_RECTANGLE'>MEDIUM_RECTANGLE</option>
+      <option value='FULL_BANNER'>FULL_BANNER</option>
+      <option value='LEADERBOARD'>LEADERBOARD</option>
+      <option value='SKYSCRAPER'>SKYSCRAPER</option>
+    </select><br/>
+    <select id="adPosition">
+      <option value='1'>Top Left</option>
+      <option value='2'>Top Center</option>
+      <option value='3'>Top Right</option>
+      <option value='4'>Left</option>
+      <option value='5'>Center</option>
+      <option value='6'>Right</option>
+      <option value='7'>Bottom Left</option>
+      <option value='8' selected>Bottom Center</option>
+      <option value='9'>Bottom Right</option>
+    </select><br/>
+    <button id='btn_create'>createBanner</button>
+    <button id='btn_remove'>removeBanner</button>
+    <button id='btn_show'>showBanner</button>
+    <button id='btn_hide'>hideBanner</button>
+    <hr />
+
+    <h3 id='h3_full'>Interstitial</h3>
+    <input type='checkbox' id='autoshow' checked />auto show when ready<br />
+    <button id='btn_prepare'>prepareInterstitial</button>
+    <button id='btn_showfull'>showInterstitial</button>
+
+    <h3 id='h3_video'>Rewarded Video</h3>
+    <input type='checkbox' id='autoshowvideo' checked />auto show when ready<br />
+    <button id='btn_preparevideo'>prepareRewardVideoAd</button>
+    <button id='btn_showvideo'>showRewardVideoAd</button>
+
+    <p><textarea rows=4 cols=30 id='textinfo'></textarea></p>
+
+  </div> -->
+</body>
+</html>

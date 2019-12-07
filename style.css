@@ -1,0 +1,143 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    font-family: 'Montserrat';
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('fonts/Montserrat/Montserrat-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    font-family: system-ui, -apple-system, -apple-system-font, 'Montserrat';
+    font-size:12px;
+    height:100vh;
+    margin:0px;
+    padding:0px;
+    /* Padding to avoid the "unsafe" areas behind notches in the screen */
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-right, 0px);
+    width:100%;
+}
+.containerBottom{
+    height: 50vh;
+    position: relative;
+    top: 50vh;
+    width: 100vw;
+}
+.containerHeader {
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    height: 50vh;
+}
+.devider {
+    border-top: 1px solid #ffffff36;
+}
+.logo{
+    margin: 0 auto;
+    width: 15vw;
+    height: auto;
+    max-width: 100px;
+    margin-top: 2vh;
+}
+.logoImg{
+    margin: 0 auto;
+    height: auto;
+    max-width: 100px;
+
+}
+.topTable{
+    width: 80%;
+}
+.mainTable{
+    width: 100%;
+
+}
+.mainTable , .topTable{
+    height: 50vh;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.mainTableElement{
+    text-align: center;
+    width: 30vw;
+    height: 10vh;
+    margin: 0 auto;
+    line-height: 10vh;
+    background: #0000002f;
+    border-radius: 3%;
+    font-size: 2em;
+    transition: 1s all;
+}
+.topTableColumn {
+    line-height: 5vh;
+    font-size: 1.5em;
+}
+.topTableColumnSpacer{
+    height: 15%;
+
+
+}
+/* Mobile Small */
+@media screen and (max-width:325px) {
+    .topTableColumn {
+        font-size: 1em;
+
+    }
+    .mainTableElement{
+        font-size: 1.3em;
+    }
+    .currWrapper{
+        font-size: 0.8em;
+    }
+}
+/* Mobile Meduim */
+@media screen and (max-width:380px) and (min-width:325px)  {
+    .topTableColumn {
+        font-size: 1.2em;
+    }
+    .mainTableElement{
+        font-size: 1.6em;
+    }
+    .currWrapper{
+        font-size: 1em;
+    }
+}
+.currWrapper{
+    width: 20%;
+    text-align: center;
+    font-size: 1.3em;
+}
+.currWrapperActive {
+    background:#00000096;
+
+}
+.currValueWrapper{
+    text-align: center;
+}
+.currValueWrapperActive {
+    background: rgba(18, 27, 32, 0.411);
+
+}
+/* 
+// Landscape layout (with min-width) 
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+
+}
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+} */
+
